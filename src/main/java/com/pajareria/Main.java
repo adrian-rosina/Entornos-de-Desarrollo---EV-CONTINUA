@@ -21,7 +21,7 @@ public class Main {
         GestorPajaros gestorPajaros = new GestorPajaros();
         GestorVentas gestorVentas = new GestorVentas();
 
-        // Datos de ejemplo (opcional, para pruebas rápidas)
+        // Datos de ejemplo para pruebas rápidas
         gestorClientes.altaCliente(new Cliente("Ana Pérez", "111A", "600111222", "ana@example.com"));
         gestorClientes.altaCliente(new Cliente("Luis Gómez", "222B", "600333444", "luis@example.com"));
         gestorPajaros.altaPajaro(new Pajaro("Canario", "Amarillo", 25.0, 5));

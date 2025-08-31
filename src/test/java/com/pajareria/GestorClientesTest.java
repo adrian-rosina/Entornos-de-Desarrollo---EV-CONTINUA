@@ -12,7 +12,7 @@ public class GestorClientesTest {
         Cliente c2 = new Cliente("Miriam", "111A", "600333444", "miriam@gmail.com"); // mismo DNI
 
         assertTrue(gc.altaCliente(c1));
-        assertFalse(gc.altaCliente(c2)); // debe rechazar duplicado
+        assertFalse(gc.altaCliente(c2)); // rechaza duplicado
     }
 
     @Test
