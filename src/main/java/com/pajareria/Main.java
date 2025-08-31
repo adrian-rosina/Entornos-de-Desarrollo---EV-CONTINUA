@@ -1,23 +1,29 @@
 package com.pajareria;
 
 
+import java.util.Scanner;
+
 /**
- * Punto de entrada de la aplicación con el menú principal.
+ * Clase principal de la aplicación. Contiene el menú de opciones para interactuar con los gestores.
+ *
  * @author Adrián Rosiña Pérez
  * @version 1.0
  */
-import java.util.Scanner;
-
 public class Main {
+    /**
+     * El método principal de la aplicación, que contiene el bucle del menú.
+     *
+     * @param args Argumentos de la línea de comandos (no se usan).
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         GestorClientes gestorClientes = new GestorClientes();
         GestorPajaros gestorPajaros = new GestorPajaros();
         GestorVentas gestorVentas = new GestorVentas();
 
-        // Datos de ejemplo para pruebas rápidas
-        gestorClientes.altaCliente(new Cliente("Adrián Rosiña", "111A", "600111222", "adrian@gmail.com"));
-        gestorClientes.altaCliente(new Cliente("Miriam Rodriguez", "222B", "600333444", "miriam@example.com"));
+        // Datos de ejemplo (opcional, para pruebas rápidas)
+        gestorClientes.altaCliente(new Cliente("Ana Pérez", "111A", "600111222", "ana@example.com"));
+        gestorClientes.altaCliente(new Cliente("Luis Gómez", "222B", "600333444", "luis@example.com"));
         gestorPajaros.altaPajaro(new Pajaro("Canario", "Amarillo", 25.0, 5));
         gestorPajaros.altaPajaro(new Pajaro("Periquito", "Azul", 18.5, 3));
         gestorPajaros.altaPajaro(new Pajaro("Jilguero", "Marrón", 30.0, 2));
@@ -42,11 +48,9 @@ public class Main {
                 case 4 -> gestorVentas.mostrarVentas();
                 case 5 -> gestorVentas.mostrarVentasPorCliente(sc);
                 case 6 -> gestorVentas.mostrarTotalesPorCliente();
-                case 7 -> System.out.println("Saliendo del sistema...");
+                case 7 -> System.out.println("Saliendo de la aplicación...");
                 default -> System.out.println("Opción inválida.");
             }
         } while (opcion != 7);
-
-        sc.close();
     }
 }

@@ -1,24 +1,33 @@
 package com.pajareria;
 
 
-/**
- * Servicio de gestión del catálogo de pájaros y utilidades de menú.
- * @author Adrián Rosiña Pérez
- * @version 1.0
- */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Servicio de gestión del catálogo de pájaros y utilidades de menú.
+ *
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 public class GestorPajaros {
     private final List<Pajaro> catalogo = new ArrayList<>();
 
+    /**
+     * Da de alta un nuevo pájaro en el catálogo.
+     *
+     * @param p El pájaro a añadir.
+     */
     public void altaPajaro(Pajaro p) {
         catalogo.add(p);
     }
 
+    /**
+     * Muestra en la consola la lista completa del catálogo de pájaros.
+     */
     public void listarCatalogo() {
         if (catalogo.isEmpty()) {
             System.out.println("No hay pájaros en el catálogo.");
@@ -29,6 +38,12 @@ public class GestorPajaros {
         }
     }
 
+    /**
+     * Busca pájaros por especie y devuelve una lista de resultados.
+     *
+     * @param especie La especie a buscar.
+     * @return Una lista de pájaros que coinciden con la especie, o una lista vacía si no se encuentra ninguno.
+     */
     public List<Pajaro> buscarPorEspecie(String especie) {
         List<Pajaro> res = new ArrayList<>();
         for (Pajaro p : catalogo) {
@@ -37,18 +52,28 @@ public class GestorPajaros {
         return res;
     }
 
+    /**
+     * Devuelve el catálogo completo de pájaros.
+     *
+     * @return La lista del catálogo.
+     */
     public List<Pajaro> getCatalogo() { return catalogo; }
 
+    /**
+     * Muestra el menú de gestión de pájaros y gestiona las opciones.
+     *
+     * @param sc El objeto Scanner para leer la entrada del usuario.
+     */
     public void menuPajaros(Scanner sc) {
         int opcion;
         do {
             System.out.println("\n=== GESTIÓN DE PÁJAROS ===");
             System.out.println("1. Alta en catálogo");
-            System.out.println("2. Listado de catálogo");
-            System.out.println("3. Búsqueda por especie");
+            System.out.println("2. Listar catálogo");
+            System.out.println("3. Buscar por especie");
             System.out.println("4. Ordenar por especie");
-            System.out.println("5. Volver");
-            System.out.print("Opción: ");
+            System.out.println("5. Volver al menú principal");
+            System.out.print("Seleccione una opción: ");
             opcion = GestorClientes.leerEntero(sc);
 
             switch (opcion) {

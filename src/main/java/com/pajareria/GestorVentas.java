@@ -1,20 +1,28 @@
 package com.pajareria;
 
 
-/**
- * Servicio para crear y consultar ventas, incluyendo control de stock.
- * @author Adrián Rosiña Pérez
- * @version 1.0
- */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Servicio para crear y consultar ventas, incluyendo control de stock.
+ *
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 public class GestorVentas {
     private final List<Venta> ventas = new ArrayList<>();
 
+    /**
+     * Crea una nueva venta con un menú guiado para el usuario.
+     *
+     * @param sc El objeto Scanner para leer la entrada del usuario.
+     * @param gc El GestorClientes para buscar clientes.
+     * @param gp El GestorPajaros para gestionar el stock y catálogo.
+     */
     public void nuevaVenta(Scanner sc, GestorClientes gc, GestorPajaros gp) {
         if (gc.getClientes().isEmpty()) {
             System.out.println("No hay clientes. Da de alta un cliente primero.");
@@ -42,58 +50,49 @@ public class GestorVentas {
                 System.out.println("No hay stock disponible. No se pueden añadir más pájaros.");
                 break;
             }
-            System.out.print("Selecciona nº de línea a añadir (0 para terminar): ");
+            System.out.print("Selecciona el número del pájaro a vender (0 para terminar): ");
             int opcion = GestorClientes.leerEntero(sc);
-            if (opcion == 0) break;
-            if (opcion < 1 || opcion > indicesDisponibles.size()) {
-                System.out.println("Selección inválida.");
-                continue;
-            }
-            int idxCatalogo = indicesDisponibles.get(opcion - 1);
-            Pajaro elegido = gp.getCatalogo().get(idxCatalogo);
-            // Restar stock y añadir a la venta
-            if (elegido.getStock() <= 0) {
-                System.out.println("Sin stock para ese pájaro.");
+            if (opcion == 0) {
+                agregando = false;
+            } else if (opcion > 0 && opcion <= indicesDisponibles.size()) {
+                int indiceSeleccionado = indicesDisponibles.get(opcion - 1);
+                Pajaro pajaro = gp.getCatalogo().get(indiceSeleccionado);
+                venta.addPajaro(pajaro);
+                pajaro.setStock(pajaro.getStock() - 1);
+                System.out.println("Pájaro añadido a la venta.");
             } else {
-                elegido.setStock(elegido.getStock() - 1);
-                venta.addPajaro(elegido);
-                System.out.println("Añadido: " + elegido);
+                System.out.println("Opción inválida.");
             }
         }
 
         if (venta.getLineasDeVenta().isEmpty()) {
-            System.out.println("Venta cancelada: no se añadieron pájaros.");
-            return;
+            System.out.println("Venta cancelada. No se añadieron productos.");
+        } else {
+            ventas.add(venta);
+            System.out.println("\n--- VENTA REGISTRADA ---");
+            System.out.println(venta);
         }
-        ventas.add(venta);
-        System.out.println("Venta creada correctamente. Total: " + String.format("%.2f", venta.calcularTotal()) + "€");
     }
 
-    private List<Integer> listarCatalogoConStock(GestorPajaros gp) {
-        List<Integer> indicesVisibles = new ArrayList<>();
-        List<Pajaro> cat = gp.getCatalogo();
-        int visible = 1;
-        for (int i = 0; i < cat.size(); i++) {
-            Pajaro p = cat.get(i);
-            if (p.getStock() > 0) {
-                System.out.println(visible + ". " + p);
-                indicesVisibles.add(i);
-                visible++;
-            }
-        }
-        return indicesVisibles;
-    }
-
+    /**
+     * Muestra la lista de ventas registradas.
+     */
     public void mostrarVentas() {
         if (ventas.isEmpty()) {
             System.out.println("No hay ventas registradas.");
             return;
         }
+        System.out.println("\n=== LISTADO DE VENTAS ===");
         for (Venta v : ventas) {
             System.out.println(v);
         }
     }
 
+    /**
+     * Muestra las ventas de un cliente específico, buscando por su DNI.
+     *
+     * @param sc El objeto Scanner para leer la entrada del usuario.
+     */
     public void mostrarVentasPorCliente(Scanner sc) {
         System.out.print("DNI del cliente: ");
         String dni = sc.nextLine().trim();
@@ -113,7 +112,9 @@ public class GestorVentas {
         }
     }
 
-    // Resumen total por cliente (todas las ventas agrupadas)
+    /**
+     * Muestra un resumen del total de ventas por cada cliente.
+     */
     public void mostrarTotalesPorCliente() {
         if (ventas.isEmpty()) {
             System.out.println("No hay ventas registradas.");
@@ -128,5 +129,18 @@ public class GestorVentas {
         for (Map.Entry<String, Double> e : acumulados.entrySet()) {
             System.out.println("DNI " + e.getKey() + ": " + String.format("%.2f", e.getValue()) + "€");
         }
+    }
+
+    private List<Integer> listarCatalogoConStock(GestorPajaros gp) {
+        List<Integer> indicesDisponibles = new ArrayList<>();
+        int i = 0;
+        for (Pajaro p : gp.getCatalogo()) {
+            if (p.getStock() > 0) {
+                System.out.println((indicesDisponibles.size() + 1) + ". " + p);
+                indicesDisponibles.add(i);
+            }
+            i++;
+        }
+        return indicesDisponibles;
     }
 }

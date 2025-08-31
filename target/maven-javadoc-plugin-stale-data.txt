@@ -1,0 +1,43 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-quiet
+-source
+'17'
+-sourcepath
+'/Users/adrianrosina/Downloads/pajareria-maven/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Pajarería – API'
+-use
+-version
+-windowtitle
+'Pajarería – API'
+com.pajareria
+/Users/adrianrosina/Downloads/pajareria-maven/src/main/java/.DS_Store = 1756675497731
+/Users/adrianrosina/Downloads/pajareria-maven/src/main/java = 1756675328575
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/tag-search-index.js = 1756683187653
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/overview-tree.html = 1756683187647
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/module-search-index.js = 1756683187652
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/index.html = 1756683187659
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/package-search-index.js = 1756683187653
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/index-all.html = 1756683187658
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/allpackages-index.html = 1756683187652
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/member-search-index.js = 1756683187653
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/help-doc.html = 1756683187660
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/element-list = 1756683187632
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/search.html = 1756683187658
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/allclasses-index.html = 1756683187652
+/Users/adrianrosina/Downloads/pajareria-maven/target/site/apidocs/type-search-index.js = 1756683187653
