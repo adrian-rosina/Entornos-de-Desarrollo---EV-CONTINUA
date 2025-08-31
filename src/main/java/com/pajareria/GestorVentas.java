@@ -1,3 +1,11 @@
+package com.pajareria;
+
+
+/**
+ * Servicio para crear y consultar ventas, incluyendo control de stock.
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +51,7 @@ public class GestorVentas {
             }
             int idxCatalogo = indicesDisponibles.get(opcion - 1);
             Pajaro elegido = gp.getCatalogo().get(idxCatalogo);
-
+            // Restar stock y añadir a la venta
             if (elegido.getStock() <= 0) {
                 System.out.println("Sin stock para ese pájaro.");
             } else {
@@ -105,7 +113,7 @@ public class GestorVentas {
         }
     }
 
-
+    // Resumen total por cliente (todas las ventas agrupadas)
     public void mostrarTotalesPorCliente() {
         if (ventas.isEmpty()) {
             System.out.println("No hay ventas registradas.");

@@ -1,3 +1,11 @@
+package com.pajareria;
+
+
+/**
+ * Servicio de gestión del catálogo de pájaros y utilidades de menú.
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

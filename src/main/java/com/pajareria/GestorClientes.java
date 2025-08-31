@@ -1,3 +1,11 @@
+package com.pajareria;
+
+
+/**
+ * Servicio de gestión CRUD de clientes y utilidades de menú.
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,7 +15,7 @@ import java.util.Scanner;
 public class GestorClientes {
     private final List<Cliente> clientes = new ArrayList<>();
 
-
+    // -------- CRUD --------
     public boolean altaCliente(Cliente c) {
         if (buscarClientePorDNI(c.getDni()) != null) return false; // DNI único
         clientes.add(c);
@@ -48,7 +56,7 @@ public class GestorClientes {
 
     public List<Cliente> getClientes() { return clientes; }
 
-
+    // -------- Utilidades de menú --------
     public void menuClientes(Scanner sc) {
         int opcion;
         do {
@@ -133,7 +141,7 @@ public class GestorClientes {
         System.out.println("Clientes ordenados por nombre.");
     }
 
-
+    // Utilidad robusta para leer enteros sin romper el Scanner
     public static int leerEntero(Scanner sc) {
         while (true) {
             String s = sc.nextLine().trim();

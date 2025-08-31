@@ -1,3 +1,11 @@
+package com.pajareria;
+
+
+/**
+ * Representa un cliente de la pajarería.
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 import java.util.Objects;
 
 public class Cliente {

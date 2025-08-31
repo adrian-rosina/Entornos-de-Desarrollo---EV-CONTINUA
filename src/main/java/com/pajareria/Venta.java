@@ -1,10 +1,18 @@
+package com.pajareria;
+
+
+/**
+ * Representa una venta asociada a un cliente y a una lista de pájaros.
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Venta {
     private Cliente cliente;
-    private List<Pajaro> lineasDeVenta;
+    private List<Pajaro> lineasDeVenta; // cada venta tiene varios pájaros
     private LocalDate fecha;
 
     public Venta(Cliente cliente) {

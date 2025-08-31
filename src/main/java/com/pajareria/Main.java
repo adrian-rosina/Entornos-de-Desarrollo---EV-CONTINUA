@@ -1,3 +1,11 @@
+package com.pajareria;
+
+
+/**
+ * Punto de entrada de la aplicación con el menú principal.
+ * @author Adrián Rosiña Pérez
+ * @version 1.0
+ */
 import java.util.Scanner;
 
 public class Main {
@@ -7,11 +15,11 @@ public class Main {
         GestorPajaros gestorPajaros = new GestorPajaros();
         GestorVentas gestorVentas = new GestorVentas();
 
-        // Datos de ejemplo pruebas rápidas
-        gestorClientes.altaCliente(new Cliente("Adrian Rosiña", "111A", "600111222", "adrian@gmail.com"));
-        gestorClientes.altaCliente(new Cliente("Miriam Rodriguez", "222B", "600333444", "miriam@gmail.com"));
+        // Datos de ejemplo para pruebas rápidas
+        gestorClientes.altaCliente(new Cliente("Adrián Rosiña", "111A", "600111222", "adrian@gmail.com"));
+        gestorClientes.altaCliente(new Cliente("Miriam Rodriguez", "222B", "600333444", "miriam@example.com"));
         gestorPajaros.altaPajaro(new Pajaro("Canario", "Amarillo", 25.0, 5));
-        gestorPajaros.altaPajaro(new Pajaro("Periquito", "Azul", 18.5, 30));
+        gestorPajaros.altaPajaro(new Pajaro("Periquito", "Azul", 18.5, 3));
         gestorPajaros.altaPajaro(new Pajaro("Jilguero", "Marrón", 30.0, 2));
 
         int opcion;
@@ -22,7 +30,7 @@ public class Main {
             System.out.println("3. Realizar venta");
             System.out.println("4. Mostrar ventas");
             System.out.println("5. Ventas por cliente");
-            System.out.println("6. Totales por cliente");
+            System.out.println("6. Totales por cliente (extra)");
             System.out.println("7. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = GestorClientes.leerEntero(sc);
